@@ -1,0 +1,1143 @@
+const EVENTS = [
+  {
+    id: 1,
+    name: "Quasi-War with France",
+    country: "France",
+    years: "1798–1800",
+    startYear: 1798,
+    endYear: 1800,
+    type: ["naval","war"],
+    era: "Early Republic",
+    description: "An undeclared naval war fought entirely at sea between the United States and France. Stemming from disputes over American neutrality during French Revolutionary Wars, the conflict saw dozens of naval engagements in the Caribbean. The U.S. Navy was formally established during this period. The war ended with the Convention of 1800 (Treaty of Mortefontaine).",
+    stats: {
+      usDeaths: "~135 killed in action",
+      enemyDeaths: "Unknown",
+      duration: "2 years",
+      cost: "~$6M (1800 USD)",
+      bombsDropped: "N/A — Naval era",
+      troopsSent: "~3,000 sailors/marines",
+      shipsEngaged: "~85 French vessels captured",
+      declared: "No (undeclared)"
+    },
+    keyFacts: [
+      "Led to the formal establishment of the U.S. Navy and Marine Corps as permanent forces",
+      "Congress authorized the capture of French vessels preying on American commerce",
+      "The USS Constellation defeated the French frigate L'Insurgente in the war's most notable battle",
+      "President Adams resisted pressure from Alexander Hamilton and the Federalists to declare full war"
+    ],
+    outcome: "The Convention of 1800 ended hostilities. France agreed to release American ships and sailors it had illegally seized. The U.S. in turn gave up all claims to damages from French depredations — a politically unpopular concession."
+  },
+  {
+    id: 2,
+    name: "First Barbary War",
+    country: "Tripoli (Libya), Morocco",
+    years: "1801–1805",
+    startYear: 1801,
+    endYear: 1805,
+    type: ["naval","war"],
+    era: "Early Republic",
+    description: "The first foreign war fought by the United States after independence. The Barbary States of North Africa (Tripoli, Algiers, Tunis, Morocco) had long demanded tribute from nations whose merchant ships sailed the Mediterranean. When the Pasha of Tripoli raised his tribute demands, President Jefferson refused to pay, and dispatched a naval squadron. The war ended with a treaty favorable to the U.S.",
+    stats: {
+      usDeaths: "~35 combat deaths",
+      enemyDeaths: "Hundreds estimated",
+      duration: "4 years",
+      cost: "~$4M (1805 USD)",
+      bombsDropped: "N/A — Naval/artillery",
+      troopsSent: "~3,000 sailors + Marines",
+      navalVessels: "4 frigates + supporting ships",
+      declared: "No (congressional authorization)"
+    },
+    keyFacts: [
+      "Gave rise to the famous line in the Marines' Hymn: 'to the shores of Tripoli'",
+      "Lieutenant Presley O'Bannon led 8 Marines and 400 mercenaries in a 500-mile desert march to capture Derna",
+      "U.S. had previously paid tribute exceeding $1M/yr — roughly 20% of the federal budget",
+      "This was the first time the American flag was raised over a fortress in the Old World"
+    ],
+    outcome: "The Pasha of Tripoli signed a treaty in June 1805, releasing American prisoners for a $60,000 ransom (rather than full tribute). The U.S. gained significant prestige in the region, though tribute payments to other Barbary States continued until the Second Barbary War of 1815."
+  },
+  {
+    id: 3,
+    name: "War of 1812",
+    country: "United Kingdom (Canada, Great Lakes)",
+    years: "1812–1815",
+    startYear: 1812,
+    endYear: 1815,
+    type: ["war","invasion"],
+    era: "Early Republic",
+    description: "The United States declared war on Britain, citing the impressment of American sailors into the Royal Navy, British support for Native American tribes resisting U.S. expansion, and interference with American trade. American forces attempted to invade Canada multiple times and failed. The British burned Washington D.C., including the White House. The war ended in a stalemate.",
+    stats: {
+      usDeaths: "~15,000 (combat + disease)",
+      enemyDeaths: "~8,600 British/Canadian",
+      duration: "2 years 8 months",
+      cost: "$105M (1812 USD)",
+      bombsDropped: "N/A — Artillery era",
+      troopsSent: "~528,000 total enrolled",
+      declared: "Yes — June 18, 1812",
+      result: "Treaty of Ghent — status quo ante bellum"
+    },
+    keyFacts: [
+      "The only time a foreign power has burned the U.S. capital since the Revolution",
+      "Andrew Jackson's victory at the Battle of New Orleans (Jan 8, 1815) was fought two weeks AFTER the peace treaty was signed",
+      "Francis Scott Key wrote 'The Star-Spangled Banner' while watching the bombardment of Fort McHenry",
+      "The war is sometimes called 'America's Second War of Independence'"
+    ],
+    outcome: "The Treaty of Ghent (December 24, 1814) restored pre-war borders. Neither side gained territory. Native American tribes who had allied with Britain lost their British support and faced accelerated U.S. expansion westward. The war boosted American nationalism and ended British-Native alliances east of the Mississippi."
+  },
+  {
+    id: 4,
+    name: "Mexican-American War",
+    country: "Mexico",
+    years: "1846–1848",
+    startYear: 1846,
+    endYear: 1848,
+    type: ["war","invasion"],
+    era: "Manifest Destiny",
+    description: "Triggered by a dispute over the Texas border and American desire for California and the Southwest, the U.S. declared war on Mexico after a skirmish along the Rio Grande. General Winfield Scott led an amphibious invasion at Veracruz and captured Mexico City — the first U.S. occupation of a foreign capital. The Treaty of Guadalupe Hidalgo transferred over half of Mexico's territory to the United States.",
+    stats: {
+      usDeaths: "~13,283 (combat + disease)",
+      enemyDeaths: "~25,000 Mexican (est.)",
+      duration: "1 year 9 months",
+      cost: "$100M (1848 USD)",
+      bombsDropped: "N/A — Artillery",
+      troopsSent: "~78,000 total",
+      territoryGained: "525,000 sq mi — TX, CA, NV, UT, AZ, NM, CO, WY",
+      declared: "Yes — May 13, 1846"
+    },
+    keyFacts: [
+      "Congressman Abraham Lincoln challenged Polk to identify the exact spot where American blood was shed on 'American soil'",
+      "Ulysses S. Grant called it 'one of the most unjust wars ever waged by a stronger nation against a weaker'",
+      "The U.S. paid Mexico $15M as part of the treaty — critics called it payment to legitimize theft",
+      "Mexico lost 55% of its pre-war territory, including all of present-day California"
+    ],
+    outcome: "Mexico ceded California, New Mexico, Nevada, Utah, most of Arizona, Colorado, and Wyoming. The U.S. paid $15M and assumed $3.25M in claims against Mexico. The new territories immediately reignited the slavery debate, contributing directly to the Civil War 13 years later."
+  },
+  {
+    id: 5,
+    name: "Spanish-American War",
+    country: "Spain (Cuba, Puerto Rico, Philippines, Guam)",
+    years: "1898",
+    startYear: 1898,
+    endYear: 1898,
+    type: ["war","invasion"],
+    era: "Imperial Era",
+    description: "Lasting only 10 weeks, this war transformed the United States into an imperial power with overseas territories. Sparked by the explosion of the USS Maine in Havana harbor (likely accidental, blamed on Spain by yellow press), and Cuba's war for independence. The U.S. defeated Spain in both the Caribbean and the Pacific, acquiring a colonial empire.",
+    stats: {
+      usDeaths: "~3,289 (379 combat, 2,910 disease)",
+      enemyDeaths: "~15,000+ Spanish/Filipino",
+      duration: "10 weeks of combat",
+      cost: "$250M (1898 USD)",
+      bombsDropped: "N/A — Naval/artillery",
+      troopsSent: "~280,000 total",
+      declared: "Yes — April 25, 1898",
+      territoriesGained: "Cuba (protectorate), Puerto Rico, Guam, Philippines ($20M)"
+    },
+    keyFacts: [
+      "Theodore Roosevelt resigned as Assistant Secretary of the Navy to lead the 'Rough Riders' volunteer cavalry",
+      "Admiral Dewey destroyed the entire Spanish Pacific Fleet at Manila Bay without losing a single man",
+      "William Randolph Hearst's newspapers are credited with whipping up public support ('You furnish the pictures, I'll furnish the war')",
+      "The Philippines were purchased from Spain for $20M, then required a brutal 3-year suppression of Filipino independence fighters"
+    ],
+    outcome: "Spain relinquished Cuba (which became a U.S. protectorate), ceded Puerto Rico, Guam, and the Philippines. The U.S. became a Pacific and Caribbean imperial power. The subsequent Philippine-American War (1899–1902) to suppress Filipino independence cost 4,200 American and 20,000+ Filipino combatant lives, plus 200,000–600,000 Filipino civilian deaths."
+  },
+  {
+    id: 6,
+    name: "Philippine-American War",
+    country: "Philippines",
+    years: "1899–1902 (guerrilla war to 1913)",
+    startYear: 1899,
+    endYear: 1913,
+    type: ["war","occupation","invasion"],
+    era: "Imperial Era",
+    description: "After the U.S. purchased the Philippines from Spain, Filipinos who had expected independence launched a war of resistance. The U.S. responded with overwhelming force, counterinsurgency campaigns, reconcentration camps, and scorched-earth tactics. Atrocities were committed on both sides. American generals ordered 'kill everyone over ten' in some districts. The war lasted years and is one of America's most forgotten conflicts.",
+    stats: {
+      usDeaths: "~4,234 combat + disease",
+      enemyDeaths: "20,000 combatants + 200,000–1,000,000 civilian (est.)",
+      duration: "14 years (formal: 3 years)",
+      cost: "$600M (1902 USD)",
+      troopsSent: "~126,000 total",
+      declared: "No (formal war authorization)",
+      civsDisplaced: "Hundreds of thousands",
+      reconcentrationCamps: "Multiple established 1901–1902"
+    },
+    keyFacts: [
+      "General Jacob Smith ordered soldiers to turn Samar into a 'howling wilderness' and kill everyone over the age of 10",
+      "Emilio Aguinaldo, the Filipino revolutionary leader, was captured by deception in 1901",
+      "The war used torture methods including the 'water cure' (precursor to waterboarding) widely",
+      "Mark Twain became a prominent anti-imperialist critic, writing 'The War Prayer' in protest"
+    ],
+    outcome: "The Philippines became a U.S. territory and would remain so until 1946. The war cemented the U.S. as a colonial power in Asia. The brutal suppression of Filipino nationalism created lasting resentment and complicated U.S.-Philippine relations throughout the 20th century."
+  },
+  {
+    id: 7,
+    name: "Banana Wars — Caribbean & Central America",
+    country: "Haiti, Nicaragua, Dominican Republic, Cuba, Honduras",
+    years: "1898–1934",
+    startYear: 1898,
+    endYear: 1934,
+    type: ["invasion","occupation"],
+    era: "Imperial Era",
+    description: "A series of occupations and interventions across the Caribbean and Central America to protect U.S. business interests (particularly United Fruit Company), enforce debt repayment, and install friendly governments. U.S. Marines occupied Haiti for 19 years, Nicaragua for 21 years on and off, the Dominican Republic for 8 years. Major General Smedley Butler — the most decorated Marine of his era — later confessed he was 'a racketeer for capitalism.'",
+    stats: {
+      usDeaths: "~3,000 across all interventions",
+      enemyDeaths: "Tens of thousands (est.)",
+      duration: "36 years (various interventions)",
+      cost: "Hundreds of millions",
+      troopsSent: "Tens of thousands across campaigns",
+      declared: "No",
+      countriesOccupied: "Haiti (1915–34), Nicaragua (1912–33), Dominican Rep. (1916–24), Cuba (1906–09, 1912, 1917–22)"
+    },
+    keyFacts: [
+      "Marine Maj. Gen. Smedley Butler wrote 'War is a Racket' (1935): 'I spent 33 years... being a high-class muscle man for Big Business'",
+      "The U.S. occupation of Haiti lasted 19 years and dissolved the Haitian legislature when it rejected a U.S.-drafted constitution",
+      "Nicaraguan guerrilla Augusto Sandino fought U.S. Marines for years; he was later assassinated by U.S.-backed Somoza forces",
+      "The interventions protected companies like United Fruit, Standard Fruit, and Wall Street banks with Latin American loans"
+    ],
+    outcome: "FDR's 'Good Neighbor Policy' (1933) formally ended direct military interventionism. However, the U.S. maintained economic dominance through client governments it had installed or supported, setting the pattern for Cold War interventionism throughout the region."
+  },
+  {
+    id: 8,
+    name: "World War I",
+    country: "Germany, Austria-Hungary (Western Front)",
+    years: "1917–1918",
+    startYear: 1917,
+    endYear: 1918,
+    type: ["war"],
+    era: "World Wars",
+    description: "The U.S. maintained neutrality for three years before entering in April 1917, after Germany's unrestricted submarine warfare and the Zimmermann Telegram (Germany's secret proposal to Mexico). Two million American troops ('doughboys') were sent to France. The American Expeditionary Forces under General Pershing played a decisive role in breaking German lines in 1918 and ending the war.",
+    stats: {
+      usDeaths: "116,516 (53,402 combat, 63,114 disease — mostly influenza)",
+      enemyDeaths: "~2M German military",
+      civilianDead: "~7M+ European civilians",
+      duration: "19 months of U.S. involvement",
+      cost: "$32B (1918 USD) / ~$670B today",
+      bombsDropped: "Artillery: millions of shells; some aerial bombing",
+      troopsSent: "~4,700,000 total mobilized; 2M to France",
+      declared: "Yes — April 6, 1917"
+    },
+    keyFacts: [
+      "The U.S. entered 3 years after the war began — by then, Europe had already suffered 15M+ deaths",
+      "The Spanish flu killed more American soldiers (63,114) than German bullets did",
+      "Wilson's '14 Points' shaped the peace negotiations but the Senate refused to ratify the League of Nations",
+      "American loans to the Allies before U.S. entry totaled $2B — creating financial incentive to see Britain win"
+    ],
+    outcome: "The Armistice was signed November 11, 1918. The Treaty of Versailles imposed crushing reparations and territorial losses on Germany — conditions historians widely cite as the economic and psychological conditions that enabled Hitler's rise. The U.S. Senate rejected Wilson's League of Nations, returning to isolationism."
+  },
+  {
+    id: 9,
+    name: "World War II — Pacific Theater",
+    country: "Japan, Pacific Islands",
+    years: "1941–1945",
+    startYear: 1941,
+    endYear: 1945,
+    type: ["war","bombing"],
+    era: "World Wars",
+    description: "After Japan's attack on Pearl Harbor (December 7, 1941), the U.S. entered the war across both the Pacific and Atlantic. The Pacific war involved island-hopping campaigns of extraordinary brutality, massive naval battles, and culminated in the atomic bombings of Hiroshima and Nagasaki. The U.S. dropped 537,000 tons of conventional bombs on Japan, plus 2 atomic bombs.",
+    stats: {
+      usDeaths: "~291,557 combat deaths (Pacific + Atlantic combined)",
+      japaneseDeaths: "~2,600,000–3,100,000 military + ~800,000 civilian (bombing, incl. atomic)",
+      atomicBombDeaths: "Hiroshima: ~140,000 | Nagasaki: ~70,000",
+      duration: "3 years, 8 months",
+      cost: "$341B (1945 USD) / ~$5T today",
+      bombsDropped: "537,000 tons (Pacific) + 2 atomic bombs",
+      conventionalBombing: "Tokyo firebombing (Mar 9-10 1945): ~100,000 dead in one night",
+      troopsSent: "~16,000,000 total U.S. mobilized",
+      declared: "Yes — Dec 8, 1941"
+    },
+    keyFacts: [
+      "The firebombing of Tokyo (March 9–10, 1945) killed approximately 100,000 people in a single night — more than either atomic bomb initially",
+      "The U.S. dropped 537,000 tons of conventional bombs on Japan before the atomic attacks",
+      "Little Boy (Hiroshima) = 15,000 tons TNT equivalent; Fat Man (Nagasaki) = 21,000 tons",
+      "Hiroshima: ~140,000 dead by year's end; Nagasaki: ~70,000 — plus tens of thousands more from radiation over subsequent years"
+    ],
+    outcome: "Japan surrendered September 2, 1945. The U.S. occupied Japan until 1952, imposing a democratic constitution and rebuilding the economy (Marshall Plan-style). Japan became a key U.S. ally. The atomic bombings remain the only use of nuclear weapons in warfare in history and continue to provoke profound ethical debate."
+  },
+  {
+    id: 10,
+    name: "World War II — European Theater",
+    country: "Germany, Italy (North Africa, Europe)",
+    years: "1941–1945",
+    startYear: 1941,
+    endYear: 1945,
+    type: ["war","bombing"],
+    era: "World Wars",
+    description: "The U.S. fought Germany and Italy across North Africa (Operation Torch), Sicily, Italy, and Northwestern Europe (D-Day, June 6, 1944). American bombers conducted the strategic bombing campaign against German industry, oil refineries, and cities. By war's end, U.S. and Allied forces had dropped 1,613,000 tons of bombs in the European theater alone.",
+    stats: {
+      usDeaths: "~291,557 (combined ETO/PTO)",
+      germanDeaths: "~5,530,000 military + ~1,000,000–2,000,000 civilian (bombing)",
+      italianDeaths: "~300,000+ military/civilian",
+      duration: "3.5 years U.S. involvement",
+      cost: "Included in combined $341B",
+      bombsDropped: "1,613,000 tons (European Theater alone)",
+      dDayTroops: "~156,000 landed June 6, 1944",
+      declared: "Yes — Dec 11, 1941 (Germany declared on U.S.)"
+    },
+    keyFacts: [
+      "D-Day (June 6, 1944) was the largest amphibious invasion in history — 156,000 troops, 11,000 aircraft, 6,900 ships",
+      "The 8th Air Force alone flew 10,631 bombing missions over Europe and lost 26,000 killed",
+      "Operation Gomorrah (Hamburg, 1943): 4 nights of bombing killed ~42,000 civilians and created fire tornadoes",
+      "Dresden bombing (Feb 1945): 22,700–25,000 killed; the necessity remains debated as the war was nearly over"
+    ],
+    outcome: "Germany surrendered unconditionally May 8, 1945 (V-E Day). Germany was divided into occupation zones. The Marshall Plan ($13B) rebuilt Western Europe. The division of Germany and Berlin became the central fault line of the Cold War, with American troops remaining in West Germany for decades."
+  },
+  {
+    id: 11,
+    name: "Korean War",
+    country: "North Korea, China",
+    years: "1950–1953",
+    startYear: 1950,
+    endYear: 1953,
+    type: ["war","bombing"],
+    era: "Cold War",
+    description: "When North Korea invaded South Korea in June 1950, the U.S. led a UN coalition in defense. General MacArthur's Inchon landing reversed the tide, but China's entry in November sent UN forces reeling back. The war settled into a brutal stalemate near the 38th parallel. The U.S. conducted one of history's most intense bombing campaigns, devastating North Korea's infrastructure and cities.",
+    stats: {
+      usDeaths: "36,516 killed in action",
+      koreanDeaths: "~2,500,000 military/civilian (North + South)",
+      chineseDeaths: "~400,000–600,000 military",
+      duration: "3 years, 1 month",
+      cost: "$30B (1953 USD) / ~$400B today",
+      bombsDropped: "653,000 tons — more than the entire Pacific Theater in WWII",
+      napalm: "32,357 tons dropped",
+      troopsSent: "~1,789,000 American total",
+      declared: "No (UN 'police action')"
+    },
+    keyFacts: [
+      "The U.S. dropped 653,000 tons of bombs on Korea — more than the entire Pacific Theater in WWII",
+      "By war's end, U.S. bombers had run out of targets: 78 of 79 North Korean cities were at least 50% destroyed",
+      "32,357 tons of napalm were dropped, burning villages and civilian areas",
+      "The war is called 'The Forgotten War' in the U.S. — North Koreans call it 'The Fatherland Liberation War'"
+    ],
+    outcome: "The armistice signed July 27, 1953 restored the border at roughly the 38th parallel — essentially the pre-war line. No peace treaty was ever signed. The Korean peninsula remains technically at war. The U.S. maintains ~28,500 troops in South Korea to this day, making it one of the longest ongoing deployments in American history."
+  },
+  {
+    id: 12,
+    name: "CIA Coup in Iran (Operation TPAJAX)",
+    country: "Iran",
+    years: "1953",
+    startYear: 1953,
+    endYear: 1953,
+    type: ["coup"],
+    era: "Cold War",
+    description: "The CIA and British MI6 orchestrated the overthrow of democratically-elected Prime Minister Mohammad Mosaddegh, who had nationalized Iranian oil. The coup restored Shah Mohammad Reza Pahlavi to power. The U.S. government acknowledged its role in 2013. The blowback from this intervention is directly linked to the 1979 Islamic Revolution and the hostage crisis — and shapes U.S.-Iran relations to this day.",
+    stats: {
+      usDeaths: "0 direct",
+      iranianDeaths: "~300 during coup violence",
+      duration: "Operation ran ~2 months",
+      cost: "$5M CIA budget for the operation",
+      bombsDropped: "None",
+      declared: "No — covert",
+      oilCompany: "Anglo-Iranian Oil Co. (BP) and U.S. oil firms benefited"
+    },
+    keyFacts: [
+      "Kermit Roosevelt Jr. (grandson of TR) led the CIA operation from inside Iran",
+      "The U.S. paid Iranian military officers, politicians, and mobs to destabilize Mosaddegh's government",
+      "Mosaddegh's 'crime' was nationalizing oil that had been controlled by British Petroleum since 1913",
+      "The CIA formally acknowledged its role in the coup in a 2013 declassified document"
+    ],
+    outcome: "The Shah ruled as a U.S.-backed autocrat until 1979, when the Islamic Revolution overthrew him. The revolutionaries took 52 American diplomats hostage for 444 days. Anti-American sentiment rooted in the 1953 coup became a cornerstone of the Islamic Republic's ideology. The CIA itself coined the term 'blowback' partly in relation to Iran."
+  },
+  {
+    id: 13,
+    name: "CIA Coup in Guatemala (Operation PBSUCCESS)",
+    country: "Guatemala",
+    years: "1954",
+    startYear: 1954,
+    endYear: 1954,
+    type: ["coup","bombing"],
+    era: "Cold War",
+    description: "The CIA engineered the overthrow of democratically-elected President Jacobo Árbenz, who had expropriated unused United Fruit Company land for peasant redistribution. The U.S. installed a military junta. The destabilization that followed led to a 36-year civil war (1960–1996) in which U.S.-backed Guatemalan forces killed an estimated 200,000 people, including a genocide of indigenous Maya communities.",
+    stats: {
+      usDeaths: "0 direct",
+      guatemalanDeaths: "~200,000 in subsequent civil war (1960–1996)",
+      duration: "Coup: weeks; civil war: 36 years",
+      cost: "$5–20M CIA",
+      bombsDropped: "CIA-operated aircraft bombed Guatemala City",
+      declared: "No — covert",
+      unitedFruitImpact: "Protected 550,000 acres of unused land"
+    },
+    keyFacts: [
+      "United Fruit Company lobbied the U.S. government and had connections to CIA Director Allen Dulles and his brother Secretary of State John Foster Dulles",
+      "Árbenz's land reform affected only uncultivated land — and offered market compensation based on United Fruit's own tax valuations",
+      "CIA aircraft dropped bombs and propaganda leaflets on Guatemala City to trigger panic and a military coup",
+      "The subsequent 36-year civil war killed ~200,000, with documented genocide of Maya Ixil communities in the 1980s"
+    ],
+    outcome: "Árbenz resigned and went into exile. A series of U.S.-backed military dictators ruled Guatemala. The CIA-authored 'KUBARK Counterintelligence Interrogation' manual — a torture guide — was used by Guatemala's security forces. The Truth Commission (1999) found that U.S. assistance was 'fundamental' to the genocide."
+  },
+  {
+    id: 14,
+    name: "Bay of Pigs Invasion",
+    country: "Cuba",
+    years: "1961",
+    startYear: 1961,
+    endYear: 1961,
+    type: ["invasion","coup"],
+    era: "Cold War",
+    description: "The CIA trained and equipped ~1,400 Cuban exiles (Brigade 2506) to invade Cuba and overthrow Fidel Castro. The invasion at the Bay of Pigs was a catastrophic failure: Kennedy refused to authorize U.S. air cover, the landing force was surrounded and captured within 3 days. The failure embarrassed the Kennedy administration and pushed Cuba closer to the Soviet Union, contributing to the Cuban Missile Crisis.",
+    stats: {
+      usDeaths: "4 CIA contract pilots killed",
+      cubanDeaths: "~176 Cuban defenders killed; ~114 exiles killed",
+      prisonersTaken: "1,189 exiles captured",
+      duration: "3 days (April 17–19, 1961)",
+      cost: "$46M CIA; $53M ransom paid for prisoners",
+      bombsDropped: "CIA B-26s bombed Cuban airfields (partially)",
+      declared: "No — covert"
+    },
+    keyFacts: [
+      "JFK inherited the plan from Eisenhower but cancelled the second air strike wave, dooming the operation",
+      "The captured exiles were ransomed 20 months later for $53M in food and medicine",
+      "The failure led JFK to distrust the CIA and military, a distrust that shaped his Cuban Missile Crisis decisions",
+      "Cuba used the invasion to justify closer ties to the Soviet Union, leading directly to nuclear missiles in Cuba (1962)"
+    ],
+    outcome: "A humiliating failure for the U.S. Castro survived and consolidated power. The prisoners were returned in December 1962. The U.S. began Operation Mongoose — a covert program of sabotage and assassination attempts against Castro. The CIA made 8 documented attempts on Castro's life (poisoned cigars, exploding seashells, etc.)."
+  },
+  {
+    id: 15,
+    name: "Vietnam War",
+    country: "Vietnam, Laos, Cambodia",
+    years: "1955–1975",
+    startYear: 1955,
+    endYear: 1975,
+    type: ["war","bombing","occupation"],
+    era: "Cold War",
+    description: "America's longest war until Afghanistan, and its most traumatic. The U.S. escalated from advisors (1955) to 543,000 troops (1969) trying to prevent communist North Vietnam from unifying the country. The U.S. dropped more bombs on Indochina than all nations combined in WWII — 7.6 million tons. The My Lai massacre, napalm attacks, Agent Orange defoliation, and the secret bombing of Laos and Cambodia defined the conflict. The U.S. withdrew in 1973; South Vietnam fell in 1975.",
+    stats: {
+      usDeaths: "58,220 killed; 153,303 wounded",
+      vietnamDeaths: "1,000,000–3,500,000 Vietnamese (military + civilian, North + South)",
+      laos: "~30,000–50,000 Laotian dead from bombing; 270M unexploded bomblets remain",
+      cambodia: "~150,000–500,000 dead from U.S. bombing (1969–73)",
+      duration: "20 years U.S. involvement",
+      cost: "$843B (inflation-adjusted 2019)",
+      bombsDropped: "7,662,000 tons total on Indochina — more than ALL of WWII combined",
+      napalm: "338,237 tons of napalm",
+      agentOrange: "~20M gallons sprayed; 400,000 killed/maimed; 500,000 birth defects",
+      troopsSent: "~2,700,000 Americans served in Vietnam",
+      declared: "No — Gulf of Tonkin Resolution (1964), later proved based on false intelligence"
+    },
+    keyFacts: [
+      "The U.S. dropped 7.6 MILLION tons of bombs — three times more than all of WWII — on Indochina",
+      "Operation Rolling Thunder (1965–68) alone dropped 864,000 tons on North Vietnam",
+      "The secret bombing of Laos made it the most heavily bombed country per capita in history (270M cluster bombs)",
+      "My Lai Massacre (March 1968): U.S. soldiers killed 347–504 unarmed Vietnamese civilians, including children",
+      "Agent Orange: 20M gallons of herbicide sprayed; 500,000 Vietnamese children born with birth defects",
+      "The Gulf of Tonkin incident (1964), used to justify escalation, was partly fabricated"
+    ],
+    outcome: "South Vietnam fell to North Vietnamese forces on April 30, 1975. The U.S. evacuated by helicopter from the embassy roof in iconic images of defeat. Vietnam was unified under communist rule. The war killed 58,220 Americans, shattered public trust in government, ended the military draft, and produced the 'Vietnam Syndrome' — reluctance to commit ground troops abroad that lasted through the 1980s."
+  },
+  {
+    id: 16,
+    name: "Secret Bombing of Laos",
+    country: "Laos",
+    years: "1964–1973",
+    startYear: 1964,
+    endYear: 1973,
+    type: ["bombing"],
+    era: "Cold War",
+    description: "The U.S. conducted the largest bombing campaign in history relative to population against Laos — a neutral country — as part of the Vietnam War. Over 9 years, B-52s dropped 270 million cluster bomblets (about 80 million remain unexploded, killing ~50 Laotians per year today). The campaign was kept secret from the American public and Congress. Laos became the most heavily bombed country per capita in all of human history.",
+    stats: {
+      usDeaths: "~200 airmen lost",
+      laotianDeaths: "Estimates range 30,000–50,000+",
+      duration: "9 years",
+      cost: "$5B (1973 USD)",
+      bombsDropped: "2,000,000+ tons — equivalent to a planeload every 8 minutes, 24/7 for 9 years",
+      clusterBombs: "270,000,000 submunitions dropped; ~80M remain unexploded",
+      uxoCasualties: "~50 per year still dying from unexploded bombs as of 2020s",
+      declared: "No — secret; not acknowledged until 1970s"
+    },
+    keyFacts: [
+      "Laos received more bombs per capita than any country in history — 2M tons on a nation of 3M people",
+      "A planeload of bombs fell every 8 minutes, 24 hours a day, for 9 consecutive years",
+      "270 million cluster bomblets were dropped; an estimated 80 million still lie buried across Laos",
+      "Obama was the first U.S. president to visit Laos (2016) and pledged $90M for UXO clearance — a fraction of cleanup costs",
+      "The bombing was kept completely secret from the American public and much of Congress"
+    ],
+    outcome: "Laos fell to the communist Pathet Lao in 1975. The country remains one of the poorest in Asia, partly due to the legacy of the bombing. As of 2023, approximately 80 million unexploded submunitions remain buried across Laos, killing and maiming dozens of people per year — mostly farmers and children. Full UXO clearance is estimated to take over a century."
+  },
+  {
+    id: 17,
+    name: "CIA Coup in Chile (Operation FUBELT)",
+    country: "Chile",
+    years: "1973",
+    startYear: 1973,
+    endYear: 1973,
+    type: ["coup"],
+    era: "Cold War",
+    description: "The Nixon administration, led by National Security Advisor Henry Kissinger, sponsored the military coup that overthrew democratically-elected socialist President Salvador Allende on September 11, 1973. The CIA and State Department destabilized Chile's economy ('make the economy scream') and backed General Augusto Pinochet's military junta. The coup was followed by 17 years of brutal dictatorship: 3,200 killed, 28,000 tortured.",
+    stats: {
+      usDeaths: "0",
+      chileanDeaths: "~3,200 killed; 28,000 tortured; ~200,000 exiled",
+      duration: "Coup: 1 day; dictatorship: 17 years (1973–1990)",
+      cost: "$8M+ CIA destabilization budget",
+      bombsDropped: "Pinochet's air force bombed the presidential palace (La Moneda) with U.S.-supplied aircraft",
+      declared: "No — covert"
+    },
+    keyFacts: [
+      "Kissinger: 'I don't see why we need to stand by and watch a country go communist due to the irresponsibility of its own people'",
+      "The CIA spent $8M+ to destabilize Chile's economy and media before the coup",
+      "Allende died on September 11, 1973 (either by suicide or murder) as the presidential palace was bombed",
+      "Pinochet's regime 'disappeared' ~3,200 people; torture was systematic and included concentration camps"
+    ],
+    outcome: "Pinochet ruled until 1990. 28,000 Chileans were tortured; hundreds were executed in the national soccer stadium. The U.S. provided the junta with lists of suspected leftists. Declassified documents show the CIA directly participated in the arrest and execution of at least two U.S. citizens in Chile. Pinochet was arrested in London in 1998 but died under house arrest in Chile in 2006."
+  },
+  {
+    id: 18,
+    name: "Invasion of Grenada (Operation Urgent Fury)",
+    country: "Grenada",
+    years: "1983",
+    startYear: 1983,
+    endYear: 1983,
+    type: ["invasion"],
+    era: "Cold War",
+    description: "Reagan ordered the invasion of Grenada, a tiny Caribbean island of 100,000 people, after a coup within the ruling Marxist government. The official justification cited the safety of 600 American medical students and a Cuban military presence. The UN General Assembly condemned the invasion as a 'flagrant violation of international law' (108-9 vote). U.S. forces secured the island in 4 days.",
+    stats: {
+      usDeaths: "19 killed; 116 wounded",
+      enemyDeaths: "~45 Grenadian + 25 Cuban killed",
+      civiliansDead: "~24 civilians, including 18 killed in psychiatric hospital bombing",
+      duration: "4 days of major combat",
+      cost: "$135M",
+      bombsDropped: "AC-130 gunships and air strikes",
+      troopsSent: "~7,600 U.S. troops",
+      declared: "No"
+    },
+    keyFacts: [
+      "The UN General Assembly condemned the invasion 108-9 — Reagan's staff reportedly joked he was going to 'frame it'",
+      "A U.S. aircraft accidentally bombed a psychiatric hospital, killing 18 patients",
+      "The 600 American medical students used as justification were never in serious danger, according to subsequent investigations",
+      "The military banned the press from covering the invasion — the first such media blackout since WWII"
+    ],
+    outcome: "U.S.-friendly government installed. Reagan declared a foreign policy victory and presented 8,600 medals — more than the number of troops who served in the operation. Historians view it as a relatively minor operation that bolstered Reagan's image after the Beirut barracks bombing (241 Marines killed by Hezbollah 2 days earlier) and reversed the 'Vietnam Syndrome' narrative."
+  },
+  {
+    id: 19,
+    name: "Bombing of Libya (Operation El Dorado Canyon)",
+    country: "Libya",
+    years: "1986",
+    startYear: 1986,
+    endYear: 1986,
+    type: ["bombing"],
+    era: "Cold War",
+    description: "Reagan ordered airstrikes on Libya in retaliation for the Libyan bombing of a West Berlin disco (La Belle) that killed 2 U.S. soldiers and a Turkish woman and wounded 229. The U.S. launched 45 minutes of bombing raids on Tripoli and Benghazi, targeting military sites but also residential areas. Gaddafi's compound was struck; his adopted daughter was killed.",
+    stats: {
+      usDeaths: "1 F-111 crew (2 airmen)",
+      libyanDeaths: "~15–45 military; 15+ civilians including Gaddafi's adopted 15-month-old daughter Hana",
+      duration: "~45 minutes of strikes",
+      cost: "~$50M operation",
+      bombsDropped: "~45 tons of precision bombs",
+      aircraftUsed: "18 F-111F, 24 A-6E, EA-6B, F/A-18, KC-10, KC-135",
+      declared: "No"
+    },
+    keyFacts: [
+      "The F-111s flew from Britain because France refused overflight rights, adding 2,800 miles to the mission",
+      "Gaddafi's compound at Bab al-Azizia was among the targets; his adopted daughter was killed",
+      "Reagan justified the attack citing evidence of Libyan involvement in the Berlin bombing (later confirmed by NSA intercepts)",
+      "The attack failed to kill Gaddafi but did temporarily reduce Libyan-sponsored terrorism"
+    ],
+    outcome: "Gaddafi temporarily curtailed terrorism sponsorship but later planned the 1988 Lockerbie bombing (Pan Am 103) that killed 270 people, which many analysts see as direct retaliation. Libya eventually admitted responsibility for Lockerbie in 2003 and paid $2.7B in compensation to families."
+  },
+  {
+    id: 20,
+    name: "Gulf War (Operation Desert Storm)",
+    country: "Iraq, Kuwait",
+    years: "1990–1991",
+    startYear: 1990,
+    endYear: 1991,
+    type: ["war","bombing","invasion"],
+    era: "Post-Cold War",
+    description: "After Iraq invaded Kuwait in August 1990, the U.S. led a 35-nation coalition in Operation Desert Shield (buildup) and Desert Storm (combat). The air campaign lasted 42 days, then a 100-hour ground war liberated Kuwait. The most technologically advanced war in history to that point, featuring precision-guided munitions, stealth aircraft, and 24-hour news coverage (CNN). Saddam Hussein remained in power.",
+    stats: {
+      usDeaths: "148 combat deaths + 145 non-combat = 293 total",
+      iraqiDeaths: "8,000–100,000 military (widely disputed); ~3,500 civilian",
+      duration: "6 weeks air + 100 hours ground",
+      cost: "$61B (mostly paid by Saudi Arabia, Kuwait, Germany, Japan)",
+      bombsDropped: "88,500 tons of bombs in 43 days",
+      sorbiesSortied: "116,000 coalition air sorties",
+      troopsSent: "697,000 U.S. personnel deployed",
+      declared: "No — congressional authorization (not declaration)"
+    },
+    keyFacts: [
+      "The 'Highway of Death' — Iraqi forces retreating from Kuwait were bombed relentlessly; scenes of carnage stopped the ground war after 100 hours",
+      "'Friendly fire' killed 35 of 148 American combat deaths (24%)",
+      "CNN's live coverage from Baghdad during bombing transformed war media forever",
+      "Gen. Colin Powell established the 'Powell Doctrine': overwhelming force, clear objectives, exit strategy"
+    ],
+    outcome: "Kuwait was liberated but Saddam Hussein remained in power. Bush did not march to Baghdad, fearing a power vacuum. 12 years of sanctions and 'no-fly zone' enforcement followed, killing an estimated 500,000 Iraqi children (UNICEF) due to medical supply shortages. Secretary Albright infamously said this price was 'worth it.' The unfinished business set up Gulf War II (2003)."
+  },
+  {
+    id: 21,
+    name: "Somalia Intervention (Black Hawk Down)",
+    country: "Somalia",
+    years: "1992–1994",
+    startYear: 1992,
+    endYear: 1994,
+    type: ["invasion"],
+    era: "Post-Cold War",
+    description: "The U.S. entered Somalia to protect humanitarian food aid during a famine and civil war. What began as 'Operation Restore Hope' escalated into urban warfare against warlord Mohamed Farrah Aidid. The Battle of Mogadishu (October 3–4, 1993) — the 'Black Hawk Down' engagement — resulted in 18 Americans killed, 73 wounded, and over 500 Somali dead. Clinton withdrew forces within months.",
+    stats: {
+      usDeaths: "43 (including Battle of Mogadishu: 18)",
+      somaliDeaths: "500–1,000+ in Battle of Mogadishu alone; several thousand overall",
+      duration: "~2 years",
+      cost: "$1.5B",
+      bombsDropped: "Limited air strikes, helicopter gunship support",
+      troopsSent: "~28,000 peak U.S. personnel",
+      declared: "No"
+    },
+    keyFacts: [
+      "The Battle of Mogadishu (Oct 3–4, 1993) was the bloodiest U.S. firefight since Vietnam",
+      "Dead American soldiers were dragged through Mogadishu's streets — images broadcast globally",
+      "Clinton's withdrawal was seen as emboldening al-Qaeda; Osama bin Laden cited it as proof America was a 'paper tiger'",
+      "The intervention began as humanitarian but mission-crept into nation-building and capturing warlords"
+    ],
+    outcome: "U.S. forces withdrew by March 1994 without achieving their objectives. Somalia remained a failed state. The 'Black Hawk Down' incident made U.S. policymakers deeply reluctant to intervene in Rwanda months later — a decision widely seen as enabling the 1994 genocide of 800,000 Tutsis."
+  },
+  {
+    id: 22,
+    name: "Bombing of Yugoslavia / Kosovo War",
+    country: "Yugoslavia (Serbia)",
+    years: "1999",
+    startYear: 1999,
+    endYear: 1999,
+    type: ["bombing","war"],
+    era: "Post-Cold War",
+    description: "NATO, led by the U.S., conducted 78 days of bombing against the Federal Republic of Yugoslavia to stop Serbian ethnic cleansing of Kosovo Albanians. No UN Security Council authorization was obtained (Russia and China would have vetoed). The campaign killed an estimated 489–527 Yugoslav civilians and caused $100B+ in infrastructure damage. It was the first major NATO combat operation and the first U.S./NATO attack on a European country since WWII.",
+    stats: {
+      usDeaths: "2 (helicopter crash; no combat deaths)",
+      yugoslavDeaths: "489–527 civilian deaths confirmed; 1,000–5,000 military",
+      kosovarDeaths: "~13,500 killed by Serbian forces during the war",
+      duration: "78 days (March 24 – June 10, 1999)",
+      cost: "$3B+ U.S.; $100B+ damage to Yugoslavia",
+      bombsDropped: "23,614 bombs and missiles (NATO total)",
+      sorbiesSortied: "38,004 NATO sorties",
+      declared: "No — no UN resolution; no congressional authorization"
+    },
+    keyFacts: [
+      "The U.S. accidentally bombed the Chinese Embassy in Belgrade, killing 3 journalists — U.S. claimed it used outdated maps",
+      "NATO hit a Serbian passenger train on a bridge, killing 10 civilians — the pilot fired a second missile after the train appeared",
+      "Depleted uranium munitions were used, causing long-term environmental contamination",
+      "Serbia capitulated after 78 days; Kosovo eventually declared independence in 2008"
+    ],
+    outcome: "Yugoslavia withdrew from Kosovo; NATO peacekeepers (KFOR) entered. Kosovo declared independence in 2008, recognized by the U.S. and most Western nations but not Serbia, Russia, or China. Slobodan Milošević was indicted for war crimes by the International Criminal Tribunal for Yugoslavia and died in custody in 2006 before a verdict."
+  },
+  {
+    id: 23,
+    name: "War in Afghanistan",
+    country: "Afghanistan",
+    years: "2001–2021",
+    startYear: 2001,
+    endYear: 2021,
+    type: ["war","bombing","occupation","invasion"],
+    era: "War on Terror",
+    description: "Launched in response to the September 11 attacks, the U.S. invaded Afghanistan to destroy al-Qaeda and topple the Taliban government that had sheltered them. What was intended as a brief campaign became America's longest war — 20 years. The Taliban were toppled in weeks but reconstituted and waged a devastating insurgency. The U.S. spent $2.26 trillion and built an Afghan army that collapsed in 11 days when the U.S. withdrew in August 2021.",
+    stats: {
+      usDeaths: "2,448 U.S. military killed; 20,722 wounded",
+      contractorDeaths: "3,846 U.S. contractors killed",
+      allyDeaths: "1,144 allied troops killed",
+      afghaniDeaths: "241,000+ directly (Brown Univ.); 700,000+ indirect deaths estimated",
+      civiliansDead: "~47,000+ Afghan civilians",
+      duration: "20 years (Oct 7, 2001 – Aug 30, 2021)",
+      cost: "$2.26 trillion direct; $6.5 trillion inc. future veteran care",
+      bombsDropped: "Over 80,000 bombs/missiles (2001–2020)",
+      troopsSent: "~775,000 U.S. troops rotated through; peak: 100,000 (2011)",
+      refugeesDisplaced: "~5.9 million Afghans displaced",
+      declared: "No — 2001 AUMF"
+    },
+    keyFacts: [
+      "The longest war in American history — 20 years, 4 presidents",
+      "The U.S. spent $83B training and equipping the Afghan National Army, which dissolved within 11 days of U.S. withdrawal",
+      "At peak (2009–2011), the U.S. had 100,000 troops in Afghanistan — the surge ordered by Obama",
+      "The CIA's drone program killed hundreds of civilians in Pakistan's tribal areas targeting al-Qaeda",
+      "Osama bin Laden was killed not in Afghanistan but Pakistan — in a Abbottabad compound near a military academy, May 2, 2011"
+    ],
+    outcome: "The Taliban retook power on August 15, 2021 as U.S. forces withdrew. The U.S.-backed Afghan government collapsed without a fight. The chaotic evacuation from Kabul airport killed 13 U.S. Marines in a suicide bombing. By 2022, 97% of Afghans were below the poverty line due to U.S.-imposed sanctions on frozen Afghan assets. The war that began targeting 19 hijackers ended with the Taliban governing 40 million Afghans."
+  },
+  {
+    id: 24,
+    name: "Iraq War (Operation Iraqi Freedom)",
+    country: "Iraq",
+    years: "2003–2011",
+    startYear: 2003,
+    endYear: 2011,
+    type: ["war","bombing","invasion","occupation"],
+    era: "War on Terror",
+    description: "The U.S., UK, and coalition invaded Iraq claiming Saddam Hussein possessed weapons of mass destruction (WMD) and had links to al-Qaeda — both claims proved false. The invasion toppled Saddam in 3 weeks, but the U.S. disbanded the Iraqi army, triggering an insurgency that spiraled into sectarian civil war. The power vacuum created by the invasion directly spawned ISIS (Islamic State).",
+    stats: {
+      usDeaths: "4,431 U.S. military killed; 31,994 wounded",
+      iraqiDeaths: "~200,000–1,000,000+ (Iraqi Body Count: 200K; Lancet study: 600K; ORB survey: 1.03M)",
+      civiliansDead: "~130,000 documented civilian deaths minimum (Iraq Body Count)",
+      duration: "8 years major combat + ongoing",
+      cost: "$1.7T direct; $2.4T total (inc. veteran care); est. $7T total long-term",
+      bombsDropped: "'Shock and Awe': 1,700 sorties, 504 cruise missiles in first 2 days; 41,000+ bombs/missiles total",
+      troopsSent: "~1.5M U.S. troops rotated through; peak: 170,000 (2007 Surge)",
+      wmdFound: "None — no WMD stockpiles found",
+      declared: "No — congressional AUMF"
+    },
+    keyFacts: [
+      "No WMDs were ever found — the stated justification for the war was entirely false",
+      "'Shock and Awe': 1,700 air sorties and 504 cruise missiles in the first 2 days of the invasion",
+      "The 2007 'Surge' (30,000 additional troops) reduced violence temporarily but didn't solve political problems",
+      "Abu Ghraib torture scandal (2004): U.S. soldiers photographed abusing, humiliating, and torturing Iraqi prisoners",
+      "ISIS/ISIL directly emerged from the power vacuum and sectarian tensions created by the invasion and occupation"
+    ],
+    outcome: "U.S. combat troops withdrew December 18, 2011. Iraq descended into sectarian conflict. ISIS emerged in 2013–2014, capturing Mosul and declaring a 'caliphate' — requiring a new U.S. military campaign (2014–present). Iraq remains deeply unstable with strong Iranian influence. The war is broadly considered one of the greatest strategic blunders in U.S. history."
+  },
+  {
+    id: 25,
+    name: "Libya Intervention",
+    country: "Libya",
+    years: "2011",
+    startYear: 2011,
+    endYear: 2011,
+    type: ["bombing"],
+    era: "War on Terror",
+    description: "NATO, led by the U.S., UK, and France, conducted a 7-month bombing campaign against Muammar Gaddafi's forces during the Libyan Civil War, citing humanitarian protection under UN Resolution 1973. Critics argued NATO exceeded its mandate — from protecting civilians to regime change. Gaddafi was captured and killed by rebels in October 2011. Libya subsequently descended into a failed state with multiple armed factions, slave markets, and ongoing civil war.",
+    stats: {
+      usDeaths: "0",
+      libyanDeaths: "~8,000–25,000 killed in civil war; ~2,000 from NATO bombing",
+      duration: "7 months (March 19 – Oct 31, 2011)",
+      cost: "$1.1B U.S.; ~$3B NATO total",
+      bombsDropped: "7,700+ NATO strike sorties; 26,000+ air sorties total",
+      declared: "No — UN Resolution 1973 cited; no congressional authorization",
+      munitionsExpended: "7,500+ precision-guided munitions"
+    },
+    keyFacts: [
+      "The UN authorized a 'no-fly zone'; NATO interpreted this as authorization to bomb pro-Gaddafi ground forces",
+      "Gaddafi was captured and killed by rebels — filmed on video — on October 20, 2011",
+      "Libya became a failed state with three rival governments and open-air slave markets for African migrants by 2016",
+      "The 2012 Benghazi attack killed U.S. Ambassador Christopher Stevens and 3 other Americans"
+    ],
+    outcome: "Gaddafi was killed but Libya fragmented into chaos. Multiple factions, militias, and two rival governments fought for control. The country became a major transit point for migrants to Europe. ISIS established a branch in Libya. Slave markets documented by CNN in 2017 shocked the world. By 2019, a new civil war erupted with foreign powers (Turkey, UAE, Russia, Egypt) backing different factions. Libya remains unstable."
+  },
+  {
+    id: 26,
+    name: "Drone War in Pakistan",
+    country: "Pakistan",
+    years: "2004–2018",
+    startYear: 2004,
+    endYear: 2018,
+    type: ["bombing"],
+    era: "War on Terror",
+    description: "Beginning under Bush and massively expanded under Obama, the CIA and U.S. military conducted a decade-long drone assassination program in Pakistan's tribal areas (FATA), targeting al-Qaeda and Taliban leadership. Pakistan was officially a U.S. ally; the strikes were carried out without formal authorization or Pakistan's public consent. Hundreds of civilians were killed alongside militants.",
+    stats: {
+      usDeaths: "0",
+      pakistaniDeaths: "2,515–4,026 killed (Bureau of Investigative Journalism); 424–969 civilians",
+      childrenKilled: "172–207 children killed",
+      duration: "14 years",
+      cost: "~$1B+ (CIA black budget)",
+      strikesLaunched: "430 confirmed strikes (BIJ estimate)",
+      declared: "No — secret program; disclosed partially post-Snowden",
+      weddingsFuneralsBombed: "Multiple documented strikes on funerals and rescuers ('double-tap')"
+    },
+    keyFacts: [
+      "Obama ordered 10x more drone strikes than Bush — 542 strikes vs. ~57",
+      "'Double-tap' strikes hit rescue workers arriving after the first strike — classified as a war crime by legal scholars",
+      "The administration counted all military-age males in a strike zone as 'combatants' unless proven otherwise",
+      "Some strikes hit funerals, wedding parties, and civilian gatherings",
+      "Pakistan's parliament repeatedly voted to condemn the strikes as violations of sovereignty"
+    ],
+    outcome: "Al-Qaeda was significantly degraded; several high-value targets eliminated. However, the program generated enormous anti-American sentiment in Pakistan, destabilized the tribal regions, and may have radicalized more recruits than it eliminated. The program is now reduced but not ended, with occasional strikes continuing."
+  },
+  {
+    id: 27,
+    name: "Syria (ISIS Campaign & Regime War)",
+    country: "Syria",
+    years: "2014–Present",
+    startYear: 2014,
+    endYear: 2025,
+    type: ["bombing","proxy"],
+    era: "War on Terror",
+    description: "The U.S. has been militarily active in Syria through multiple, sometimes conflicting campaigns: bombing ISIS/ISIL since 2014, supporting Kurdish SDF forces, limited strikes against Assad's government (2017, 2018), and maintaining ongoing presence in eastern Syria despite no legal authorization under international law. The U.S. also covertly armed Syrian rebels through Operation Timber Sycamore ($1B/year) before ending it in 2017.",
+    stats: {
+      usDeaths: "~19 U.S. troops killed in Syria",
+      syrianDeaths: "~500,000+ total Syrian civil war deaths; tens of thousands from U.S. and coalition bombing",
+      duration: "10+ years and ongoing",
+      cost: "$24B+ U.S. cost in Syria (2014–2023)",
+      bombsDropped: "70,000+ bombs/missiles (U.S.-led coalition, 2014–2023)",
+      raqqa: "Raqqa offensive (2017): ~1,600 civilians killed; 80% of city destroyed",
+      declared: "No — 2001/2002 AUMF cited; highly legally disputed"
+    },
+    keyFacts: [
+      "The U.S. has maintained ~900 troops in Syria with no congressional authorization or UN mandate",
+      "The Raqqa campaign (2017) killed ~1,600 civilians and destroyed 80% of the city — more destructive than Mosul",
+      "The U.S. struck Assad's forces twice (April 2017, April 2018) over chemical weapon use",
+      "Operation Timber Sycamore secretly armed ~10,000 Syrian rebels at $1B/year — many weapons ended up in ISIS hands"
+    ],
+    outcome: "ISIS's territorial 'caliphate' was destroyed by 2019, but the group continues as an insurgency. Assad retained power (with Russian and Iranian support). The U.S. still occupies eastern Syria, ostensibly to guard oil fields and counter ISIS. Syria remains in ruins with 5.3M refugees and 6.7M internally displaced — the world's largest displacement crisis."
+  },
+  {
+    id: 28,
+    name: "Yemen (Support for Saudi Campaign + Direct Strikes)",
+    country: "Yemen",
+    years: "2015–Present",
+    startYear: 2015,
+    endYear: 2025,
+    type: ["bombing","proxy"],
+    era: "Recent",
+    description: "The U.S. has provided intelligence, refueling, and weapons to Saudi Arabia's bombing campaign against Houthi rebels since 2015, and has conducted its own drone strikes and special operations raids. The Saudi-led coalition (armed by the U.S. and UK) has killed tens of thousands of civilians and created what the UN called the world's worst humanitarian crisis. In 2024, the Biden and Trump administrations launched direct U.S. bombing of Houthi targets in response to attacks on Red Sea shipping.",
+    stats: {
+      usDeaths: "~1 U.S. service member killed (2017)",
+      yemeniDeaths: "150,000–377,000+ dead (direct + indirect); 70% civilian (UN est.)",
+      childrenDead: "~10,000+ children killed directly",
+      duration: "10+ years and ongoing",
+      cost: "$54B+ in U.S. weapons sold to Saudi Arabia (2015–2021)",
+      bombsDropped: "2024–2025 U.S. strikes: hundreds of missiles and bombs on Yemen",
+      declared: "No — 2001 AUMF cited; 2024 strikes with no congressional vote"
+    },
+    keyFacts: [
+      "U.S.-supplied bombs killed 40 children on a school bus in a Saudi airstrike (August 2018, Dahyan)",
+      "The UN describes Yemen as the world's worst humanitarian crisis: 21.6M people need aid",
+      "Saudi jets were refueled mid-air by U.S. Air Force tankers until 2018",
+      "The 2024 U.S. bombing campaign against Houthi targets marked direct U.S. strikes in Yemen — no new congressional authorization obtained",
+      "Cholera outbreak in Yemen — the largest in recorded history — linked to bombing of water/sanitation infrastructure"
+    ],
+    outcome: "Ongoing. The war has killed hundreds of thousands and left 21 million in need of humanitarian assistance. U.S. direct bombing of Yemen began in January 2024 in response to Houthi attacks on Red Sea shipping in solidarity with Gaza. No peace agreement exists. Yemen remains divided between Houthi and Saudi-backed government control."
+  },
+  {
+    id: 31,
+    name: "Syria, Somalia & Caribbean Strikes (Trump 2nd Term)",
+    country: "Syria, Somalia, Nigeria, Caribbean",
+    years: "2025–2026 (Ongoing)",
+    startYear: 2025,
+    endYear: 2026,
+    type: ["bombing","proxy"],
+    era: "Recent",
+    description: "Since returning to office, Trump has dramatically expanded U.S. military operations across multiple theaters simultaneously. In Syria, after two U.S. soldiers and a civilian interpreter were killed in an ISIS ambush in December 2025, the U.S. launched Operation Hawkeye Strike — 'large-scale strikes' that eliminated 50+ ISIS operatives by February 2026. In Somalia, AFRICOM has continued drone and special operations strikes against al-Shabaab (which is gaining ground) and ISIS-Somalia. In Nigeria, a December 25, 2025 strike targeted ISIS operatives in Sokoto state. In the Caribbean, the U.S. has conducted lethal strikes on suspected drug-trafficking vessels under a new counter-narcotics mandate, killing 150+ people as of March 2026.",
+    stats: {
+      usDeaths: "2 soldiers + 1 interpreter killed (Syria ambush, Dec 2025)",
+      enemyDeaths: "50+ ISIS operatives (Hawkeye Strike, Syria); 150+ in Caribbean drug-boat strikes",
+      duration: "Ongoing across multiple theaters",
+      cost: "Undisclosed; Caribbean buildup alone ~$1B+",
+      syriaStrikes: "Large-scale bombing campaign Operation Hawkeye Strike, Dec 2025–Feb 2026",
+      caribbeanStrikes: "Sept 2025 first lethal maritime strike; 'double tap' on survivors documented",
+      somaliaStrikes: "2+ known operations in 2026 against al-Shabaab and ISIS-Somalia",
+      declared: "No — 2001 AUMF cited; maritime strikes under counter-narcotics authority"
+    },
+    keyFacts: [
+      "The 'double-tap' Caribbean strike — hitting survivors of the first strike — has drawn congressional and international scrutiny as a potential war crime",
+      "Al-Shabaab is gaining ground in Somalia despite years of U.S. strikes, and is pushing closer to Mogadishu as of 2026",
+      "The U.S. still maintains ~900 troops in Syria with no congressional authorization or UN mandate",
+      "Trump has threatened military operations in Colombia and suggested acquiring Greenland by force",
+      "Operation Hawkeye Strike killed the second-in-command of ISIS in an Al Anbar province strike (March 13, 2025)"
+    ],
+    outcome: "ONGOING. The expansion of U.S. military action across three continents — Iran, Venezuela, Syria, Somalia, Caribbean, Nigeria — represents the broadest simultaneous deployment footprint since the peak of the post-9/11 wars. No formal declarations of war or congressional authorizations have been obtained for any of the new operations. Legal scholars and some members of Congress have raised War Powers Act concerns across multiple theaters."
+  },
+  {
+    id: 29,
+    name: "Operation Absolute Resolve — Venezuela",
+    country: "Venezuela",
+    years: "Jan 3, 2026",
+    startYear: 2026,
+    endYear: 2026,
+    type: ["invasion","coup"],
+    era: "Recent",
+    description: "In the early hours of January 3, 2026, U.S. Delta Force and special operations units launched a raid on Venezuelan President Nicolás Maduro's compound in Caracas under cover of darkness and helicopter fire. The U.S. bombed infrastructure across northern Venezuela to suppress air defenses before the assault team seized Maduro and his wife, Cilia Flores. They were transported to New York City by U.S. forces and arraigned in Manhattan federal court on January 5 on narcoterrorism charges. Trump framed it as a 'law-enforcement action' with military support. It followed months of escalating pressure: maritime drug-trafficking strikes in the Caribbean, oil tanker seizures, and covert CIA operations beginning in late December 2025.",
+    stats: {
+      usDeaths: "0 (1 Marine fell overboard from USS Iwo Jima during pre-op)",
+      venezuelanDeaths: "Unknown — infrastructure bombing deaths not publicly confirmed",
+      duration: "Single-night raid; months of buildup",
+      cost: "Not disclosed; ~$1B+ for regional buildup of 11,000 troops",
+      bombsDropped: "Infrastructure strikes across northern Venezuela to suppress air defenses",
+      troopsSent: "~11,000 U.S. troops surged to region (Dec 2025 baseline x8)",
+      caribbean: "150+ killed in Caribbean drug-boat strikes Sept 2025–Jan 2026",
+      declared: "No — Trump called it 'inherent constitutional authority'; no AUMF"
+    },
+    keyFacts: [
+      "Delta Force erected a full-scale mockup of Maduro's compound for rehearsals before the operation",
+      "The FAA issued a NOTAM prohibiting U.S. aircraft over Venezuelan airspace citing 'ongoing military activity' on Jan 3",
+      "The U.S. Embassy in Caracas had already relocated to Colombia in anticipation of the operation",
+      "Hundreds protested in Times Square chanting 'Hands Off Venezuela'; oil prices rose only 1% as Venezuela is 1% of global supply",
+      "The New York Times and Washington Post received advance leaks but withheld reporting to protect U.S. personnel",
+      "Caribbean drug-boat strikes (Sept 2025–March 2026) killed 150+ people, including a 'double-tap' strike on survivors of the first hit"
+    ],
+    outcome: "Maduro and Flores pleaded not guilty in Manhattan federal court on January 5, 2026. Venezuela remained in political limbo. The operation was the first direct U.S. military seizure of a sitting foreign head of state on foreign soil. Critics called it a violation of the UN Charter and international law. Congress had not authorized the operation. Venezuela's government mobilized protests calling for Maduro's release, with his son addressing thousands of supporters one month after the strike."
+  },
+  {
+    id: 30,
+    name: "Operation Epic Fury — Iran (ONGOING)",
+    country: "Iran",
+    years: "Feb 28, 2026–Present",
+    startYear: 2026,
+    endYear: 2026,
+    type: ["war","bombing"],
+    era: "Recent",
+    description: "On February 28, 2026, the United States and Israel launched coordinated military strikes on Iran in what Trump called 'the most powerful military operation in American history.' Codenamed Operation Epic Fury, the opening phase targeted Iran's missile infrastructure, nuclear sites, and senior leadership. Supreme Leader Ayatollah Ali Khamenei, 86, was killed in the opening hours. The U.S. struck over 5,000 targets in the first 10 days, deploying B-2 stealth bombers, F-35s, HIMARS, Tomahawk cruise missiles, and the combat debut of the Precision Strike Missile (PrSM) and the LUCAS drone. As of early April 2026, the campaign remains active, with sustained U.S. force posture in the region and continued indications of contingency planning beyond an air-only phase. Casualty and damage reporting remains highly contested across all sides. Iran has continued retaliatory missile and drone attacks across the Gulf, targeting U.S.-aligned military and energy infrastructure.",
+    stats: {
+      usDeaths: "7+ killed in action; 290+ wounded (latest publicly reported figures, early April 2026)",
+      iranianDeaths: "1,045+ confirmed (Iran Ministry of Health); HRANA est. 7,000+; Trump admin claims 32,000 — all disputed",
+      civiliansDead: "Heavily disputed; 18 hospitals struck (WHO); school strike in Minab killed 168+ including schoolgirls; Isfahan dormitory strike killed 108 students",
+      duration: "Ongoing — launched Feb 28, 2026",
+      cost: "$11.3B+ in first 6 days (Pentagon confirmed); ongoing",
+      targetsStruck: "5,000+ in first 10 days",
+      iranianShipsSunk: "50 Iranian naval vessels damaged or destroyed",
+      missilesDronesIntercepted: "282 missiles + 833 drones intercepted by Gulf state defenses (first 24 hrs)",
+      troopsSent: "7,000+ additional deployed since conflict began; USS Abraham Lincoln + USS Tripoli strike groups active (early April 2026)",
+      oilPrices: "Loading current oil price...",
+      declared: "No congressional authorization; no War Powers notification filed"
+    },
+    keyFacts: [
+      "The opening strike on Feb 28 hit over 1,000 targets simultaneously — launched at 1:15 AM local time",
+      "Supreme Leader Khamenei was killed in the opening hours — Trump announced it in a 2:30 AM White House video",
+      "The Army's Precision Strike Missile (PrSM) and LUCAS one-way attack drones made their combat debut in this operation",
+      "A U.S. F-15E shot down its own MQ-9 Reaper drone in a friendly fire incident over western Iran",
+      "Iran struck Prince Sultan Air Base (6 ballistic missiles + 29 drones) and Camp Arifjan (Kuwait); 6 Army Reserve soldiers killed at Kuwait command center",
+      "ACLED documented 2,800+ distinct strike events across 29 of Iran's 31 provinces within the first month",
+      "U.S. Northern Command detected and defeated a drone threat over a 'strategic installation' on American soil during Epic Fury",
+      "As of early April, the U.S. has claimed progress on diplomatic off-ramps while Iranian officials continue to deny direct negotiations"
+    ],
+    outcome: "ONGOING as of April 2, 2026. Iran's drone capacity has been reduced ~95% per U.S. military claims. Iran's navy has lost 30+ ships. The Strait of Hormuz remains technically open but shipping is constrained by war-risk insurance and threat levels, keeping oil markets elevated. Russia has deployed naval assets to the Eastern Mediterranean and is reportedly sharing U.S. military positions with Iran. The IAEA still cannot verify Iran's nuclear status since Israeli strikes in June 2025 destroyed inspection access. Congress has not authorized the operation, and War Powers challenges remain active. No verified ceasefire framework has been announced; the final scope, cost, and strategic outcome remain unknown."
+  }
+];
+
+const ERA_COLORS = {
+  "Early Republic": "#5a3d7a",
+  "Manifest Destiny": "#b5921f",
+  "Imperial Era": "#9b2226",
+  "World Wars": "#9b2226",
+  "Cold War": "#2a6090",
+  "Post-Cold War": "#3d7a4a",
+  "War on Terror": "#9b2226",
+  "Recent": "#c17a2a"
+};
+
+const TYPE_DOTS = {
+  war: "#9b2226",
+  invasion: "#b5921f",
+  bombing: "#2a6090",
+  coup: "#3d7a4a",
+  occupation: "#5a3d7a",
+  naval: "#5a3d7a",
+  proxy: "#b5921f"
+};
+
+function getDotColor(ev) {
+  if (ev.type.includes("war")) return "#9b2226";
+  if (ev.type.includes("bombing")) return "#2a6090";
+  if (ev.type.includes("coup")) return "#3d7a4a";
+  if (ev.type.includes("invasion")) return "#b5921f";
+  return "#5a3d7a";
+}
+
+let currentFilter = "all";
+let currentSearch = "";
+let selectedId = null;
+
+function getFiltered() {
+  return EVENTS.filter(ev => {
+    const matchFilter = currentFilter === "all" || ev.type.includes(currentFilter);
+    const q = currentSearch.toLowerCase();
+    const matchSearch = !q || ev.name.toLowerCase().includes(q) || ev.country.toLowerCase().includes(q) || ev.years.includes(q);
+    return matchFilter && matchSearch;
+  }).sort((a, b) => {
+    return (b.endYear - a.endYear) || (b.startYear - a.startYear) || (b.id - a.id);
+  });
+}
+
+function renderSidebar() {
+  const filtered = getFiltered();
+  const sb = document.getElementById("sidebar");
+  document.getElementById("countLabel").textContent = `${filtered.length} conflicts`;
+  
+  if (filtered.length === 0) {
+    sb.innerHTML = `<div style="padding:32px;text-align:center;color:#333;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">No results</div>`;
+    return;
+  }
+  
+  sb.innerHTML = filtered.map(ev => {
+    const isLive = ev.endYear >= 2026;
+    return `<div class="event-card ${selectedId===ev.id?'active':''} ${isLive?'live-event':''}" data-id="${ev.id}" onclick="selectEvent(${ev.id})">
+      <div class="card-year">${ev.startYear}${isLive?'<span class="live-badge">LIVE</span>':''}</div>
+      <div class="card-name">${ev.name}</div>
+      <div class="card-country">${ev.country}</div>
+      <div class="card-tags">
+        ${ev.type.map(t => `<span class="tag tag-${t}">${t}</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderDetail(ev) {
+  const detail = document.getElementById("detail");
+  if (!ev) {
+    detail.innerHTML = `<div class="empty-state"><div class="big">←</div><p>Select a conflict to view details</p></div>`;
+    return;
+  }
+  
+  const statRows = Object.entries(ev.stats).map(([k, v]) => {
+    const label = k.replace(/([A-Z])/g, ' $1').toUpperCase();
+    const isRed = k.includes("Deaths") || k.includes("dead") || k.includes("killed");
+    const isWide = String(v).length > 20;
+    return `<div class="stat-cell">
+      <div class="stat-cell-label">${label}</div>
+      <div class="stat-cell-value ${isRed?'red':''} ${isWide?'white':''}">${v}</div>
+    </div>`;
+  }).join('');
+  
+  detail.innerHTML = `
+    <div class="detail-inner detail-wrap">
+      <div class="detail-year-badge">${ev.startYear}</div>
+      <div class="detail-eyebrow">${ev.era} · ${ev.years}</div>
+      <h2 class="detail-title">${ev.name}</h2>
+      <div class="detail-location">vs. ${ev.country}</div>
+      <div class="detail-tags">${ev.type.map(t=>`<span class="tag tag-${t}">${t}</span>`).join('')}</div>
+      <div class="divider"></div>
+      <p class="detail-desc">${ev.description}</p>
+      <div class="stats-grid">${statRows}</div>
+      <div class="key-facts">
+        <h3>Key Facts</h3>
+        ${ev.keyFacts.map(f=>`<div class="fact-item">${f}</div>`).join('')}
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-label">Outcome & Legacy</div>
+        <div class="outcome-text">${ev.outcome}</div>
+      </div>
+    </div>
+  `;
+  if (ev.id === 30) {
+    updateOilPriceStat();
+  }
+  detail.scrollTop = 0;
+}
+
+async function updateOilPriceStat() {
+  const key = 'oilPrices';
+  const statCell = Array.from(document.querySelectorAll('.stat-cell')).find(cell => {
+    const label = cell.querySelector('.stat-cell-label');
+    return label && label.textContent.trim() === key.replace(/([A-Z])/g, ' $1').toUpperCase();
+  });
+  if (!statCell) return;
+
+  const valueEl = statCell.querySelector('.stat-cell-value');
+  if (!valueEl) return;
+
+  // EIA Brent spot endpoint (public). We use the latest record if available.
+  const url = 'https://api.eia.gov/v2/petroleum/pri/spt/data/?frequency=daily&data[0]=value&facets[product][]=EPCBRENT&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=1';
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Price feed unavailable');
+    const data = await res.json();
+    const row = data?.response?.data?.[0];
+    const price = row?.value;
+    const date = row?.period;
+
+    if (typeof price === 'number' && date) {
+      valueEl.textContent = `$${price.toFixed(2)}/barrel (${date})`;
+      return;
+    }
+    throw new Error('No price data');
+  } catch (_err) {
+    valueEl.textContent = 'Current price unavailable — check live markets';
+  }
+}
+
+function selectEvent(id) {
+  selectedId = id;
+  renderSidebar();
+  renderDetail(EVENTS.find(e=>e.id===id));
+  // Sync timeline
+  document.querySelectorAll('.tl-dot').forEach(d => {
+    d.classList.toggle('active', parseInt(d.dataset.id) === id);
+  });
+}
+
+function renderTimeline() {
+  const track = document.getElementById("tlTrack");
+  const minY = 1776, maxY = 2027, range = maxY - minY;
+
+  // 80px per year gives ~20,000px total — lots of breathing room
+  const PX_PER_YEAR = 80;
+  const totalWidth = range * PX_PER_YEAR;
+  track.style.width = totalWidth + 'px';
+
+  function yearToPx(y) { return ((y - minY) / range) * totalWidth; }
+
+  // Decade markers + labels every 10 years
+  for (let y = 1780; y <= 2026; y += 10) {
+    const x = yearToPx(y);
+    const marker = document.createElement('div');
+    marker.className = 'tl-decade-marker';
+    marker.style.left = x + 'px';
+    marker.style.top = '50%';
+    track.appendChild(marker);
+
+    const label = document.createElement('div');
+    label.className = 'tl-decade-label';
+    label.style.left = x + 'px';
+    label.style.top = '50%';
+    label.textContent = y;
+    if (y % 50 === 0) { label.style.color = '#888'; label.style.fontSize = '13px'; }
+    track.appendChild(label);
+  }
+
+  // Sort events by startYear so dots are placed correctly regardless of array order
+  const sorted = [...EVENTS].sort((a, b) => a.startYear - b.startYear);
+
+  sorted.forEach(ev => {
+    const x = yearToPx(ev.startYear);
+    const isLive = ev.endYear >= 2026;
+
+    const dot = document.createElement('div');
+    dot.className = 'tl-dot' + (isLive ? ' tl-live' : '');
+    dot.dataset.id = ev.id;
+    dot.style.left = x + 'px';
+    dot.style.background = '#0a0a0a';
+    dot.style.borderColor = isLive ? '#ff4444' : getDotColor(ev);
+    dot.title = ev.name + ' (' + ev.years + ')';
+    dot.onclick = () => {
+      selectEvent(ev.id);
+      document.getElementById('sidebar').querySelector('[data-id="' + ev.id + '"]')?.scrollIntoView({behavior:'smooth',block:'nearest'});
+    };
+
+    const label = document.createElement('span');
+    label.className = 'tl-dot-label';
+    label.textContent = ev.startYear;
+    dot.appendChild(label);
+    track.appendChild(dot);
+  });
+}
+
+// Filters
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderSidebar();
+  });
+});
+
+document.getElementById('searchBox').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  renderSidebar();
+});
+
+// Set app height dynamically
+function setAppHeight() {
+  const header = document.getElementById('main-header');
+  const filters = document.getElementById('filters');
+  const h = header.offsetHeight + filters.offsetHeight;
+  document.getElementById('appGrid').style.height = `calc(100vh - ${h}px)`;
+}
+
+renderTimeline();
+renderSidebar();
+setAppHeight();
+window.addEventListener('resize', setAppHeight);
+
+// Scroll timeline to show ~1940 onwards on load so modern events are visible
+const tlCont = document.getElementById('tlContainer');
+const tlTrack = document.getElementById('tlTrack');
+setTimeout(() => {
+  // Scroll to ~1940 (about 66% of 1776-2027 range)
+  const scrollTo = (tlTrack.offsetWidth * 0.66);
+  tlCont.scrollLeft = scrollTo;
+}, 100);
+
+// Drag-to-scroll on timeline
+let isDown = false, startX, scrollStart;
+tlCont.addEventListener('mousedown', e => { isDown=true; startX=e.pageX-tlCont.offsetLeft; scrollStart=tlCont.scrollLeft; });
+tlCont.addEventListener('mouseleave', () => isDown=false);
+tlCont.addEventListener('mouseup', () => isDown=false);
+tlCont.addEventListener('mousemove', e => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - tlCont.offsetLeft;
+  tlCont.scrollLeft = scrollStart - (x - startX);
+});
+</script>
