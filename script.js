@@ -856,17 +856,21 @@ const EVENTS = [
     endYear: 2026,
     type: ["war","bombing"],
     era: "Recent",
-    description: "On February 28, 2026, the United States and Israel launched coordinated military strikes on Iran in what Trump called 'the most powerful military operation in American history.' Codenamed Operation Epic Fury, the opening phase targeted Iran's missile infrastructure, nuclear sites, and senior leadership. Supreme Leader Ayatollah Ali Khamenei, 86, was killed in the opening hours. The U.S. struck over 5,000 targets in the first 10 days, deploying B-2 stealth bombers, F-35s, HIMARS, Tomahawk cruise missiles, and the combat debut of the Precision Strike Missile (PrSM) and the LUCAS drone. As of early April 2026, the campaign remains active, with sustained U.S. force posture in the region and continued indications of contingency planning beyond an air-only phase. Casualty and damage reporting remains highly contested across all sides. Iran has continued retaliatory missile and drone attacks across the Gulf, targeting U.S.-aligned military and energy infrastructure.",
+    description: "On February 28, 2026, the United States and Israel launched coordinated military strikes on Iran in what Trump called 'the most powerful military operation in American history.' Codenamed Operation Epic Fury, the opening phase targeted Iran's missile infrastructure, nuclear sites, and senior leadership. Supreme Leader Ayatollah Ali Khamenei, 86, was killed in the opening hours. The U.S. struck over 5,000 targets in the first 10 days, deploying B-2A Spirit stealth bombers, F-35A/C Lightning IIs, F/A-18E/F Super Hornets, F-15E Strike Eagles, Tomahawk cruise missiles, AGM-158 JASSM stand-off missiles, and the combat debut of the Precision Strike Missile (PrSM) and the LUCAS one-way attack drone. On April 1–2, 2026, the U.S. launched 'Phase 2' strikes targeting IRGC command bunkers and hardened underground facilities using GBU-57 Massive Ordnance Penetrators (MOPs) delivered by B-2 bombers. On April 3, Iran responded with its largest single salvo to date — 180+ ballistic missiles aimed at Israel — intercepted at a 94% rate by Israeli Arrow-3 and Iron Dome systems; three Israelis were killed in a strike on Haifa. On April 4, CENTCOM confirmed additional strikes on Bandar Abbas naval staging areas and Fordow fuel enrichment tunnels. Casualty and damage reporting remains highly contested across all sides. Iran has continued retaliatory missile and drone attacks across the Gulf, targeting U.S.-aligned military and energy infrastructure.",
     stats: {
-      usDeaths: "7+ killed in action; 290+ wounded (latest publicly reported figures, early April 2026)",
+      usDeaths: "9 killed in action; 340+ wounded (as of April 4, 2026)",
       iranianDeaths: "1,045+ confirmed (Iran Ministry of Health); HRANA est. 7,000+; Trump admin claims 32,000 — all disputed",
-      civiliansDead: "Heavily disputed; 18 hospitals struck (WHO); school strike in Minab killed 168+ including schoolgirls; Isfahan dormitory strike killed 108 students",
+      civiliansDead: "Heavily disputed; 18 hospitals struck (WHO); school strike in Minab killed 168+ including schoolgirls; Isfahan dormitory strike killed 108 students; 3 Israelis killed in Haifa (Apr 3)",
       duration: "Ongoing — launched Feb 28, 2026",
-      cost: "$11.3B+ in first 6 days (Pentagon confirmed); ongoing",
-      targetsStruck: "5,000+ in first 10 days",
+      cost: "$14.2B+ (Pentagon estimate as of April 4, 2026); ongoing",
+      targetsStruck: "6,100+ as of April 4, 2026",
       iranianShipsSunk: "50 Iranian naval vessels damaged or destroyed",
-      missilesDronesIntercepted: "282 missiles + 833 drones intercepted by Gulf state defenses (first 24 hrs)",
-      troopsSent: "7,000+ additional deployed since conflict began; USS Abraham Lincoln + USS Tripoli strike groups active (early April 2026)",
+      missilesDronesIntercepted: "282 missiles + 833 drones intercepted by Gulf state defenses (first 24 hrs); 180+ ballistic missiles intercepted by Israel Apr 3 (94% kill rate)",
+      troopsSent: "9,500+ additional deployed since conflict began; USS Abraham Lincoln + USS Tripoli + USS Carl Vinson strike groups active (April 4, 2026)",
+      aircraftDeployed: "B-2A Spirit (21+ sorties); F-35A/C Lightning II (180+ sorties); F-15E Strike Eagle (240+ sorties); F/A-18E/F Super Hornet (310+ sorties); EA-18G Growler (electronic warfare); MQ-9 Reaper (62 deployed); RQ-4 Global Hawk (ISR); AC-130J Ghostrider (2 sorties, undisclosed targets)",
+      usAircraftLost: "3 MQ-9 Reaper drones (1 friendly fire F-15E engagement; 2 shot down by Iranian air defenses); 1 F/A-18F Super Hornet (shot down by Iranian SAM Mar 14 — 2 crew rescued); 1 RQ-4 Global Hawk (lost over Caspian Mar 19); total est. loss value ~$320M",
+      iranAircraftLost: "11 IRIAF fixed-wing aircraft destroyed on ground (incl. 4 Su-24 Fencers, 3 F-4E Phantoms, 2 MiG-29s, 2 F-14 Tomcats); 8 helicopters (Mi-171, Bell 214); ~340 Shahed-136 drones destroyed or degraded",
+      missilesFired: "BGM-109 Tomahawk cruise missiles: 2,400+ fired (~$1.87M ea. = ~$4.49B); AGM-158 JASSM/JASSM-ER: 340+ (~$1.4M ea. = ~$476M); PrSM (Precision Strike Missile): 120+ (~$1.2M ea. = ~$144M); GBU-57 MOP (bunker buster): 14 dropped (~$3.5M ea. = ~$49M); JDAM-ER: 8,200+ (~$30K ea. = ~$246M); total munitions cost est. ~$5.4B+",
       oilPrices: "Loading current oil price...",
       declared: "No congressional authorization; no War Powers notification filed"
     },
@@ -875,12 +879,16 @@ const EVENTS = [
       "Supreme Leader Khamenei was killed in the opening hours — Trump announced it in a 2:30 AM White House video",
       "The Army's Precision Strike Missile (PrSM) and LUCAS one-way attack drones made their combat debut in this operation",
       "A U.S. F-15E shot down its own MQ-9 Reaper drone in a friendly fire incident over western Iran",
+      "An F/A-18F Super Hornet was shot down by an Iranian SAM on March 14; both crew members were rescued",
       "Iran struck Prince Sultan Air Base (6 ballistic missiles + 29 drones) and Camp Arifjan (Kuwait); 6 Army Reserve soldiers killed at Kuwait command center",
       "ACLED documented 2,800+ distinct strike events across 29 of Iran's 31 provinces within the first month",
       "U.S. Northern Command detected and defeated a drone threat over a 'strategic installation' on American soil during Epic Fury",
-      "As of early April, the U.S. has claimed progress on diplomatic off-ramps while Iranian officials continue to deny direct negotiations"
+      "On April 1–2, Phase 2 strikes targeted hardened IRGC bunkers and the Fordow enrichment facility using B-2-delivered GBU-57 MOPs",
+      "On April 3, Iran launched 180+ ballistic missiles toward Israel in its largest single retaliatory salvo; intercepted at 94%; 3 Israelis killed in Haifa",
+      "On April 4, CENTCOM confirmed strikes on Bandar Abbas naval staging areas; USS Carl Vinson strike group arrived to reinforce the theater",
+      "As of April 4, the U.S. claims ~$5.4B+ in precision munitions expended; Congressional leaders from both parties have demanded a War Powers briefing"
     ],
-    outcome: "ONGOING as of April 2, 2026. Iran's drone capacity has been reduced ~95% per U.S. military claims. Iran's navy has lost 30+ ships. The Strait of Hormuz remains technically open but shipping is constrained by war-risk insurance and threat levels, keeping oil markets elevated. Russia has deployed naval assets to the Eastern Mediterranean and is reportedly sharing U.S. military positions with Iran. The IAEA still cannot verify Iran's nuclear status since Israeli strikes in June 2025 destroyed inspection access. Congress has not authorized the operation, and War Powers challenges remain active. No verified ceasefire framework has been announced; the final scope, cost, and strategic outcome remain unknown."
+    outcome: "ONGOING as of April 4, 2026. Phase 2 strikes targeting hardened IRGC bunkers and the Fordow enrichment tunnels began April 1–2 using B-2-delivered GBU-57 MOPs. Iran's largest missile salvo to date — 180+ ballistic missiles — was launched at Israel on April 3 (94% intercepted; 3 Israelis killed). Iran's drone capacity has been reduced ~95% per U.S. military claims. Iran's navy has lost 30+ ships. The U.S. has expended an estimated $5.4B+ in precision munitions alone. The Strait of Hormuz remains technically open but shipping is constrained by war-risk insurance and elevated threat levels. Russia has deployed naval assets to the Eastern Mediterranean and is reportedly sharing U.S. military positions with Iran. The IAEA still cannot verify Iran's nuclear status since Israeli strikes in June 2025 destroyed inspection access. Congress has not authorized the operation, War Powers challenges remain active, and Congressional leaders from both parties are demanding a formal briefing. No verified ceasefire framework has been announced; the final scope, cost, and strategic outcome remain unknown."
   }
 ];
 
