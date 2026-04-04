@@ -296,6 +296,9 @@
     border: 1px solid #1a1a1a;
     margin-bottom: 32px;
   }
+  .stats-grid--two-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .stat-cell {
     background: #0d0d0d;
     padding: 16px;

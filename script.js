@@ -985,7 +985,7 @@ function renderDetail(ev) {
       <div class="detail-tags">${ev.type.map(t=>`<span class="tag tag-${t}">${t}</span>`).join('')}</div>
       <div class="divider"></div>
       <p class="detail-desc">${ev.description}</p>
-      <div class="stats-grid">${statRows}</div>
+      <div class="stats-grid${ev.id === 30 ? ' stats-grid--two-col' : ''}">${statRows}</div>
       <div class="key-facts">
         <h3>Key Facts</h3>
         ${ev.keyFacts.map(f=>`<div class="fact-item">${f}</div>`).join('')}
