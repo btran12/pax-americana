@@ -959,6 +959,78 @@ function renderSidebar() {
   }).join('');
 }
 
+const AIRCRAFT_SVGS = {
+  fighter: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30" width="18" height="27" style="display:inline-block;vertical-align:middle"><path d="M10,1 L11.5,20 L10,29 L8.5,20 Z" fill="currentColor"/><polygon points="10,11 19,24 11,19 9,19 1,24" fill="currentColor"/><polygon points="10,6 13,11 10,9 7,11" fill="currentColor" opacity="0.7"/><polygon points="9,21 6,27 9,24" fill="currentColor"/><polygon points="11,21 14,27 11,24" fill="currentColor"/></svg>',
+  drone: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 18" width="40" height="15" style="display:inline-block;vertical-align:middle"><ellipse cx="24" cy="9" rx="21" ry="3.2" fill="currentColor"/><polygon points="24,7 48,14 48,16 24,11 0,16 0,14" fill="currentColor" opacity="0.82"/><circle cx="4" cy="9" r="3.8" fill="none" stroke="currentColor" stroke-width="1.5"/><polygon points="7,9 1,4.5 3.5,8.5" fill="currentColor" opacity="0.8"/><polygon points="7,9 1,13.5 3.5,9.5" fill="currentColor" opacity="0.8"/></svg>',
+  recon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 16" width="46" height="13" style="display:inline-block;vertical-align:middle"><ellipse cx="29" cy="8" rx="26" ry="3.5" fill="currentColor"/><polygon points="29,6 58,12 58,14 29,10 0,14 0,12" fill="currentColor" opacity="0.82"/><circle cx="53" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
+  helicopter: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 24" width="38" height="20" style="display:inline-block;vertical-align:middle"><line x1="1" y1="7" x2="27" y2="7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4,10 Q14,7 22,10 L26,18 Q14,22 4,18 Z" fill="currentColor"/><ellipse cx="10" cy="14" rx="4" ry="3.5" fill="none" stroke="currentColor" stroke-width="0.75"/><rect x="24" y="13" width="17" height="2.5" rx="1.2" fill="currentColor"/><line x1="39" y1="9" x2="39" y2="18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+  shahed: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" width="18" height="16" style="display:inline-block;vertical-align:middle"><polygon points="11,1 21,19 11,17 1,19" fill="currentColor"/><line x1="11" y1="3" x2="11" y2="17" stroke="#0a0a0a" stroke-width="0.7"/></svg>'
+};
+
+function buildLossesHTML() {
+  const US_LOSSES = [
+    { name: 'F/A-18F Super Hornet', type: 'fighter',    count: 1,   note: 'Shot down by Iranian SAM · Mar 14 · 2 crew rescued' },
+    { name: 'MQ-9 Reaper',         type: 'drone',      count: 3,   note: '1 friendly fire (F-15E); 2 downed by Iranian air defenses' },
+    { name: 'RQ-4 Global Hawk',    type: 'recon',      count: 1,   note: 'Lost over Caspian Sea · Mar 19' }
+  ];
+  const IRAN_LOSSES = [
+    { name: 'Su-24 Fencer',        type: 'fighter',    count: 4,   note: 'Destroyed on ground' },
+    { name: 'F-4E Phantom II',     type: 'fighter',    count: 3,   note: 'Destroyed on ground' },
+    { name: 'MiG-29 Fulcrum',      type: 'fighter',    count: 2,   note: 'Destroyed on ground' },
+    { name: 'F-14A Tomcat',        type: 'fighter',    count: 2,   note: 'Destroyed on ground' },
+    { name: 'Mi-171 / Bell 214',   type: 'helicopter', count: 8,   note: 'Various locations' },
+    { name: 'Shahed-136',          type: 'shahed',     count: 340, note: 'Intercepted or degraded' }
+  ];
+
+  const MAX_ICONS = 10;
+
+  function makeIconGroup(item, color) {
+    const svg = AIRCRAFT_SVGS[item.type] || AIRCRAFT_SVGS.fighter;
+    const shown = Math.min(item.count, MAX_ICONS);
+    const icons = Array.from({length: shown}, () =>
+      `<span class="loss-icon" style="color:${color}" title="${item.name}">${svg}</span>`
+    ).join('');
+    const overflow = item.count > MAX_ICONS
+      ? `<span class="loss-overflow" style="color:${color}">×${item.count}</span>`
+      : '';
+    return `<div class="loss-row">
+        <div class="loss-icons-wrap">${icons}${overflow}</div>
+        <div class="loss-meta">
+          <span class="loss-aircraft-name">${item.name}</span>
+          <span class="loss-aircraft-count" style="color:${color}">${item.count} lost</span>
+          <span class="loss-aircraft-note">${item.note}</span>
+        </div>
+      </div>`;
+  }
+
+  const usSide  = US_LOSSES.map(l  => makeIconGroup(l,  '#c55a6a')).join('');
+  const iranSide = IRAN_LOSSES.map(l => makeIconGroup(l, '#c88b3a')).join('');
+
+  return `<div class="losses-panel">
+      <div class="losses-panel-header">
+        <span class="losses-line"></span>
+        <span class="losses-title-text">COMBAT LOSSES — OPERATION EPIC FURY</span>
+        <span class="losses-line"></span>
+      </div>
+      <div class="losses-cols">
+        <div class="losses-col">
+          <div class="losses-col-head">
+            <span class="losses-flag-label us-label">U.S.</span>
+            <span class="losses-col-sublabel">AIRCRAFT LOST · ~$320M est.</span>
+          </div>
+          ${usSide}
+        </div>
+        <div class="losses-col">
+          <div class="losses-col-head">
+            <span class="losses-flag-label iran-label">IRAN</span>
+            <span class="losses-col-sublabel">AIRCRAFT LOST · 11 fixed-wing + 8 helos + ~340 drones</span>
+          </div>
+          ${iranSide}
+        </div>
+      </div>
+    </div>`;
+}
+
 function renderDetail(ev) {
   const detail = document.getElementById("detail");
   if (!ev) {
@@ -986,6 +1058,7 @@ function renderDetail(ev) {
       <div class="divider"></div>
       <p class="detail-desc">${ev.description}</p>
       <div class="stats-grid${ev.id === 30 ? ' stats-grid--two-col' : ''}">${statRows}</div>
+      ${ev.id === 30 ? buildLossesHTML() : ''}
       <div class="key-facts">
         <h3>Key Facts</h3>
         ${ev.keyFacts.map(f=>`<div class="fact-item">${f}</div>`).join('')}
