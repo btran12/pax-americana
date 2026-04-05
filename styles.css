@@ -536,9 +536,30 @@
   }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
   @media (max-width: 768px) {
-    .app { grid-template-columns: 1fr; }
-    .sidebar { max-height: 300px; }
-    .detail-inner { padding: 24px 20px; }
+    header { padding: 24px 16px 18px; }
+    .header-eyebrow { font-size: 9px; letter-spacing: 0.15em; }
+    .header-sub { font-size: 12px; margin-top: 10px; }
+    .stat-bar { gap: 12px 20px; margin-top: 18px; }
+    .stat-num { font-size: 26px; }
+    .stat-label { font-size: 7px; letter-spacing: 0.1em; }
+
+    .filters { gap: 6px 8px; padding: 10px 12px; }
+    .filter-btn { padding: 7px 10px; font-size: 9px; }
+    .search-box { width: 100%; margin-left: 0; margin-top: 2px; }
+
+    .app { grid-template-columns: 1fr; height: auto; min-height: unset; }
+    .sidebar { max-height: 42vh; min-height: 180px; border-right: none; border-bottom: 1px solid #222; }
+    .detail { min-height: 60vh; }
+    .detail-inner { padding: 20px 16px; }
+    .detail-year-badge { font-size: 52px; right: 16px; top: 14px; }
+
+    .empty-state .big { font-size: 0; }
+    .empty-state .big::after { content: '↓'; font-size: 64px; color: #1a1a1a; font-family: 'Bebas Neue', sans-serif; }
+    .empty-state p { font-size: 10px; }
+
+    .timeline-section { padding: 24px 14px; }
+    .timeline-title { font-size: 22px; }
+    .timeline-sub { font-size: 8px; letter-spacing: 0.1em; }
   }
 
   /* ── LOSSES PANEL ── */
@@ -644,6 +665,9 @@
   }
   @media (max-width: 768px) {
     .losses-cols { grid-template-columns: 1fr; }
+    .losses-flag-label { font-size: 22px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid--two-col { grid-template-columns: 1fr; }
   }
 
   /* ── COUNTRIES SECTION ── */
@@ -701,6 +725,8 @@
     flex-shrink: 0;
   }
   @media (max-width: 768px) {
-    .countries-section { padding: 32px 20px 48px; }
+    .countries-section { padding: 28px 16px 40px; }
+    .countries-section-title { font-size: 22px; }
     .countries-grid { grid-template-columns: 1fr; }
+    .country-row-years { font-size: 8px; }
   }
