@@ -1115,6 +1115,10 @@ function selectEvent(id) {
   document.querySelectorAll('.tl-dot').forEach(d => {
     d.classList.toggle('active', parseInt(d.dataset.id) === id);
   });
+  // On mobile (stacked layout) scroll the detail panel into view
+  if (window.innerWidth <= 768) {
+    document.getElementById('detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function renderTimeline() {
@@ -1188,12 +1192,17 @@ document.getElementById('searchBox').addEventListener('input', e => {
   renderSidebar();
 });
 
-// Set app height dynamically
+// Set app height dynamically (desktop only — mobile uses auto/stacked layout)
 function setAppHeight() {
+  const appGrid = document.getElementById('appGrid');
+  if (window.innerWidth <= 768) {
+    appGrid.style.height = 'auto';
+    return;
+  }
   const header = document.getElementById('main-header');
   const filters = document.getElementById('filters');
   const h = header.offsetHeight + filters.offsetHeight;
-  document.getElementById('appGrid').style.height = `calc(100vh - ${h}px)`;
+  appGrid.style.height = `calc(100vh - ${h}px)`;
 }
 
 renderTimeline();
@@ -1210,7 +1219,7 @@ setTimeout(() => {
   tlCont.scrollLeft = scrollTo;
 }, 100);
 
-// Drag-to-scroll on timeline
+// Drag-to-scroll on timeline (mouse)
 let isDown = false, startX, scrollStart;
 tlCont.addEventListener('mousedown', e => { isDown=true; startX=e.pageX-tlCont.offsetLeft; scrollStart=tlCont.scrollLeft; });
 tlCont.addEventListener('mouseleave', () => isDown=false);
@@ -1221,4 +1230,15 @@ tlCont.addEventListener('mousemove', e => {
   const x = e.pageX - tlCont.offsetLeft;
   tlCont.scrollLeft = scrollStart - (x - startX);
 });
+
+// Touch drag-to-scroll on timeline (mobile)
+let touchStartX, touchScrollStart;
+tlCont.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].pageX - tlCont.offsetLeft;
+  touchScrollStart = tlCont.scrollLeft;
+}, { passive: true });
+tlCont.addEventListener('touchmove', e => {
+  const x = e.touches[0].pageX - tlCont.offsetLeft;
+  tlCont.scrollLeft = touchScrollStart - (x - touchStartX);
+}, { passive: true });
 
