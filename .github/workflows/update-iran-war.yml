@@ -1,0 +1,49 @@
+name: Update Iran War Entry
+
+on:
+  schedule:
+    # Daily at midnight UTC
+    - cron: '0 0 * * *'
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-iran-entry:
+    name: Run Iran war update agent
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install openai duckduckgo-search
+
+      - name: Run update agent
+        env:
+          # GITHUB_TOKEN is automatically provisioned — no extra secret required
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python .github/scripts/update_iran_war.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add script.js
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: update Iran war entry — $(date -u +'%B %d, %Y')"
+            git push
+          fi
